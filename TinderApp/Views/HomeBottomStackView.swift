@@ -12,10 +12,10 @@ class HomeBottomStackView: UIStackView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    let bottomStackViewSubviews: [UIView] = [UIColor.black, .systemPink, .magenta, .green, .orange].map { color -> UIView in
-      let view = UIView()
-      view.backgroundColor = color
-      return view
+    let bottomStackViewSubviews: [UIButton] = [UIImage(named: "reload"), .init(named: "close"), .init(named: "super-like"), .init(named: "like"), .init(named: "power")].map { image -> UIButton in
+      let button = UIButton(type: .custom)
+      button.setImage(image, for: .normal)
+      return button
     }
     
     bottomStackViewSubviews.forEach { view in
