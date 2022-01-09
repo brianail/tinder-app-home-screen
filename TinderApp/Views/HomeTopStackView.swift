@@ -8,28 +8,31 @@
 import UIKit
 
 class HomeTopStackView: UIStackView {
+  
+  let userButton = UIButton(type: .custom)
+  let fireImageView = UIImageView(image: .init(named: "fire")!)
+  let chatButton = UIButton(type: .custom)
 
   override init(frame: CGRect) {
     
     super.init(frame: frame)
     
-    let icons: [UIImage?] = [.init(named: "user"), .init(named: "fire"), .init(named: "chat")]
+    userButton.setImage(UIImage(named: "user"), for: .normal)
+    chatButton.setImage(UIImage(named: "chat"), for: .normal)
+    fireImageView.contentMode = .scaleAspectFit
     
-    let topStackViewSubviews: [UIButton] = icons.map { image -> UIButton in
-      let button = UIButton(type: .custom)
-      // we could also set image.withRenderingMode(.alwaysOriginal)
-      button.setImage(image, for: .normal)
-      return button
+    
+    self.distribution = .equalCentering
+    self.heightAnchor.constraint(equalToConstant: 80).isActive = true
+    
+    [userButton, fireImageView, chatButton].forEach { view in
+      self.addArrangedSubview(view)
     }
     
-    topStackViewSubviews.forEach(addArrangedSubview(_:))
     
-    self.distribution = .fillEqually
-    self.heightAnchor.constraint(equalToConstant: 80).isActive = true
-    /*
-     self.layoutMargins = .init(top: 16, left: 0, bottom: 16, right: 0)
-     self.isLayoutMarginsRelativeArrangement = true
-     */
+    self.layoutMargins = .init(top: 0, left: 24, bottom: 0, right: 24)
+    self.isLayoutMarginsRelativeArrangement = true
+     
   }
   
   required init(coder: NSCoder) {
