@@ -21,6 +21,7 @@ class HomeCardView: UIView {
     imageView.fillSuperView()
     imageView.contentMode = .scaleAspectFill
     imageView.clipsToBounds = true
+    imageView.layer.cornerRadius = 8.0
   }
   
   required init?(coder: NSCoder) {
