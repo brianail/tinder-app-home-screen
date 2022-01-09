@@ -33,7 +33,7 @@ class HomeCardView: UIView {
             
     switch gesture.state {
     case .ended:
-      UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut) {
+      UIView.animate(withDuration: 0.35, delay: 0, options: .curveEaseOut) {
         self.transform = .identity // default value
         //.init(translationX: 0, y: 0)
       }
