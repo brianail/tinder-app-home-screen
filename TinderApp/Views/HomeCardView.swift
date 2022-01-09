@@ -33,13 +33,9 @@ class HomeCardView: UIView {
     switch gesture.state {
     case .ended:
       
-      var shouldDismissCard = false
-      
       let translation = gesture.translation(in: nil)
       
-      if translation.x > 60 || translation.x < -60  {
-        shouldDismissCard = true
-      }
+      let shouldDismissCard = gesture.translation(in: nil).x > 60 || gesture.translation(in: nil).x < -60
       
       UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
         if shouldDismissCard {
