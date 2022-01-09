@@ -42,10 +42,11 @@ class ViewController: UIViewController {
   fileprivate func setupLayout() { // can't be accessed by another file
     let stackView = UIStackView(arrangedSubviews: [topStackView, cardsDeckView, bottomStackView])
     stackView.axis = .vertical
-        
     view.addSubview(stackView)
         
     stackView.fillSuperViewSafeArea()
+    
+    stackView.bringSubviewToFront(cardsDeckView)
   }
 }
 
