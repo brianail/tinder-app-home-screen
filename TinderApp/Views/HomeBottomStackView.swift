@@ -25,7 +25,7 @@ class HomeBottomStackView: UIStackView {
     }
     
     self.distribution = .fillEqually
-    self.heightAnchor.constraint(equalToConstant: 120).isActive = true
+    self.heightAnchor.constraint(equalToConstant: 100).isActive = true
   }
   
   required init(coder: NSCoder) {

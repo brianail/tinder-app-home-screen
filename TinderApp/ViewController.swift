@@ -10,33 +10,43 @@ import UIKit
 class ViewController: UIViewController {
   
   let topStackView = HomeTopStackView()
-  let blueView = UIView()
+  let cardsDeckView = UIView()
   let bottomStackView = HomeBottomStackView()
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    blueView.backgroundColor = .blue
     setupLayout()
-    
+    setupCard()
   }
   
   // MARK: Fileprivate
   
+  fileprivate func setupCard() {
+    let cardView = HomeCardView() // frame: .zero
+    
+    cardsDeckView.addSubview(cardView)
+    
+    //cardView.fillSuperView()
+    
+    cardView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      cardView.topAnchor.constraint(equalTo: cardsDeckView.topAnchor),
+      cardView.leadingAnchor.constraint(equalTo: cardsDeckView.leadingAnchor, constant: 8),
+      cardView.bottomAnchor.constraint(equalTo: cardsDeckView.bottomAnchor),
+      cardView.trailingAnchor.constraint(equalTo: cardsDeckView.trailingAnchor, constant: -8)
+    ])
+    
+    
+  }
+  
   fileprivate func setupLayout() { // can't be accessed by another file
-    let stackView = UIStackView(arrangedSubviews: [topStackView, blueView, bottomStackView])
+    let stackView = UIStackView(arrangedSubviews: [topStackView, cardsDeckView, bottomStackView])
     stackView.axis = .vertical
-    
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    
     view.addSubview(stackView)
         
-    NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-      stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-      stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-    ])
+    stackView.fillSuperViewSafeArea()
+    
+    stackView.bringSubviewToFront(cardsDeckView)
   }
 }
 
