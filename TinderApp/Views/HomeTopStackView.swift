@@ -23,6 +23,10 @@ class HomeTopStackView: UIStackView {
     
     self.distribution = .fillEqually
     self.heightAnchor.constraint(equalToConstant: 120).isActive = true
+    /*
+     self.layoutMargins = .init(top: 16, left: 0, bottom: 16, right: 0)
+     self.isLayoutMarginsRelativeArrangement = true
+     */
   }
   
   required init(coder: NSCoder) {

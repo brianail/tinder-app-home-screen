@@ -27,9 +27,9 @@ class ViewController: UIViewController {
     view.addSubview(stackView)
     
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: view.topAnchor),
+      stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
       stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
     
