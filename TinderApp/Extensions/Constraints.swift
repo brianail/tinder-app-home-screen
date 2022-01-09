@@ -18,4 +18,14 @@ extension UIView {
       self.trailingAnchor.constraint(equalTo: self.superview!.trailingAnchor)
     ])
   }
+  
+  func fillSuperViewSafeArea() {
+    self.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      self.topAnchor.constraint(equalTo: self.superview!.safeAreaLayoutGuide.topAnchor),
+      self.leadingAnchor.constraint(equalTo: self.superview!.leadingAnchor),
+      self.bottomAnchor.constraint(equalTo: self.superview!.safeAreaLayoutGuide.bottomAnchor),
+      self.trailingAnchor.constraint(equalTo: self.superview!.trailingAnchor)
+    ])
+  }
 }
