@@ -8,13 +8,25 @@
 import UIKit
 
 class HomeCardView: UIView {
+  
+  fileprivate let imageView = UIImageView(image: .init(named: "cardImage")!)
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    // Custom Drawing Code
+    
+    addSubview(imageView)
+    
+    imageView.fillSuperView()
+    imageView.contentMode = .scaleAspectFill
+    imageView.clipsToBounds = true
+  }
+  
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  
 
 }
