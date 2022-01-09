@@ -8,17 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+  
+  let topStackView = HomeTopStackView()
+  let blueView = UIView()
+  let bottomStackView = HomeBottomStackView()
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let topStackView = HomeTopStackView()
-    
-    let blueView = UIView()
     blueView.backgroundColor = .blue
+    setupLayout()
     
-    let bottomStackView = HomeBottomStackView()
-        
+  }
+  
+  // MARK: Fileprivate
+  
+  fileprivate func setupLayout() { // can't be accessed by another file
     let stackView = UIStackView(arrangedSubviews: [topStackView, blueView, bottomStackView])
     stackView.axis = .vertical
     

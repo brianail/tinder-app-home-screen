@@ -21,14 +21,12 @@ class HomeTopStackView: UIStackView {
     chatButton.setImage(UIImage(named: "chat"), for: .normal)
     fireImageView.contentMode = .scaleAspectFit
     
-    
     self.distribution = .equalCentering
     self.heightAnchor.constraint(equalToConstant: 80).isActive = true
     
     [userButton, fireImageView, chatButton].forEach { view in
       self.addArrangedSubview(view)
     }
-    
     
     self.layoutMargins = .init(top: 0, left: 24, bottom: 0, right: 24)
     self.isLayoutMarginsRelativeArrangement = true
