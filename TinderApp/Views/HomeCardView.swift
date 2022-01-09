@@ -29,20 +29,47 @@ class HomeCardView: UIView {
   
   @objc fileprivate func handlePlan(gesture: UIPanGestureRecognizer) {
     
-    let translation = gesture.translation(in: self)
-            
+    
     switch gesture.state {
     case .ended:
-      UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut) {
-        self.transform = .identity // default value
-        //.init(translationX: 0, y: 0)
+      
+      var shouldDismissCard = false
+      
+      let translation = gesture.translation(in: nil)
+      
+      if translation.x > 60 || translation.x < -60  {
+        shouldDismissCard = true
       }
+      
+      UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
+        if shouldDismissCard {
+          self.transform = .init(translationX: (translation.x > 0 ? 1000 : -1000), y: 0)
+          
+        } else {
+          self.transform = .identity // default value
+        }
+      }) { (_) in
+        self.transform = .identity
+        self.frame = .init(x: 6, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
+      }
+      
+      
     case.changed:
-      self.transform = .init(translationX: translation.x, y: translation.y)
+      
+      let translation = gesture.translation(in: nil)
+      print(translation.x)
+      
+      let convertDegreeToRadians = (translation.x / 20) * (Double.pi / 180)
+      let rotationalTransformation = CGAffineTransform(rotationAngle: convertDegreeToRadians)
+      
+      self.transform = rotationalTransformation.translatedBy(x: translation.x, y: 0)
+      
+      /*if translation.x > 40 || translation.x < -40 {
+       should
+       }*/
+      
     default: () // don't care about this
     }
-        
-    
   }
   
   required init?(coder: NSCoder) {
