@@ -12,15 +12,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let topStackViewSubviews: [UIView] = [UIColor.black, .systemPink, .magenta].map { color -> UIView in
-      let view = UIView()
-      view.backgroundColor = color
-      return view
-    }
-    
-    let topStackView = UIStackView(arrangedSubviews: topStackViewSubviews)
-    topStackView.distribution = .fillEqually
-    topStackView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+    let topStackView = HomeTopStackView()
     
     let blueView = UIView()
     blueView.backgroundColor = .blue
