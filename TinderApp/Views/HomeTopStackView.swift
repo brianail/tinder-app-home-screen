@@ -13,8 +13,11 @@ class HomeTopStackView: UIStackView {
     
     super.init(frame: frame)
     
-    let topStackViewSubviews: [UIButton] = [UIImage(named: "user"), .init(named: "fire"), .init(named: "chat")].map { image -> UIButton in
+    let icons: [UIImage?] = [.init(named: "user"), .init(named: "fire"), .init(named: "chat")]
+    
+    let topStackViewSubviews: [UIButton] = icons.map { image -> UIButton in
       let button = UIButton(type: .custom)
+      // we could also set image.withRenderingMode(.alwaysOriginal)
       button.setImage(image, for: .normal)
       return button
     }

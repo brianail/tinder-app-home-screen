@@ -18,24 +18,20 @@ class ViewController: UIViewController {
     blueView.backgroundColor = .blue
     
     let bottomStackView = HomeBottomStackView()
-    
+        
     let stackView = UIStackView(arrangedSubviews: [topStackView, blueView, bottomStackView])
     stackView.axis = .vertical
     
     stackView.translatesAutoresizingMaskIntoConstraints = false
     
     view.addSubview(stackView)
-    
+        
     NSLayoutConstraint.activate([
       stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
       stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
       stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
     ])
-    
-    
   }
-
-
 }
 
