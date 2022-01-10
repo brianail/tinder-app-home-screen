@@ -10,6 +10,7 @@ import UIKit
 class HomeCardView: UIView {
   
   fileprivate let imageView = UIImageView(image: .init(named: "cardImage")!)
+  fileprivate let shouldDismissCardXValue: CGFloat = 80
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -35,7 +36,7 @@ class HomeCardView: UIView {
       
       let translation = gesture.translation(in: nil)
       
-      let shouldDismissCard = gesture.translation(in: nil).x > 60 || gesture.translation(in: nil).x < -60
+      let shouldDismissCard = gesture.translation(in: nil).x > shouldDismissCardXValue || gesture.translation(in: nil).x < -shouldDismissCardXValue
       
       UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
         if shouldDismissCard {
@@ -46,7 +47,7 @@ class HomeCardView: UIView {
         }
       }) { (_) in
         self.transform = .identity
-        self.frame = .init(x: 6, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height)
+        self.frame = .init(x: 6, y: 0, width: self.superview!.frame.width, height: self.superview!.frame.height) // 6 because of card view margin
       }
       
       
@@ -60,11 +61,7 @@ class HomeCardView: UIView {
       
       self.transform = rotationalTransformation.translatedBy(x: translation.x, y: 0)
       
-      /*if translation.x > 40 || translation.x < -40 {
-       should
-       }*/
-      
-    default: () // don't care about this
+    default: ()
     }
   }
   
